@@ -1,0 +1,325 @@
+/*
+Algumas informações úteis e dicas:
+  - Fontes disponíveis:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Permanent Marker', cursive;
+  - Cores:
+    Tons de amarelo:
+      #e4fc2b
+      #e0d426
+      #f7d736
+      #e0af26
+      #fcb02b
+    Tons de cinza:
+      #2c2c2c
+      #4c4c4c
+    Cores dos cards:
+      #ead3a7
+      #9de0f5
+      #ef89ba
+      #fae890
+      #abe9c1
+  - Sombra: https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --post-it-yellow: #f7d736;
+}
+
+/* Você pode usar o CSS comentado abaixo, se ajudar */
+
+/* Fonte: https://codepen.io/CrisWoler/pen/ogXBLj */
+
+.btn {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background-color: var(--post-it-yellow);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, 0.3);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+.appbar {
+  background-color: #f7d736;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 15%), 0 2px 3px rgb(0 0 0 / 22%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  height: 50px;
+  margin: 1% 1%;
+}
+
+.container {
+  text-align: center;
+}
+
+.form-card {
+  z-index: 1;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 1rem;
+  flex-direction: column;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 15%), 0 2px 3px rgb(0 0 0 / 22%);
+  padding: 15px;
+  border-radius: 8px;
+  transition: right 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.show {
+  visibility: visible;
+  animation: fadeIn 0.3s;
+  right: 6rem;
+}
+
+.form-card input,
+.form-card textarea {
+  border: none;
+  border-bottom: 1px solid #ffff;
+  transition: 0.2s border-bottom;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-bottom: 1px solid var(--post-it-yellow);
+  outline: none;
+}
+
+.form-card input {
+  font-size: 1.4rem;
+}
+
+.form-card textarea {
+  margin: 5px 0;
+  resize: none;
+}
+
+.form-card button:hover {
+  cursor: pointer;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1.5rem 2.5rem 0;
+  margin-bottom: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 15%), 0 2px 3px rgb(0 0 0 / 22%);
+  width: 200px;
+  height: 110px;
+  text-align: left;
+  padding: 10px;
+  font-family: "Permanent Marker", cursive;
+  margin: 10px 0px;
+  border-radius: 2px;
+}
+
+.card input,
+.card button,
+.card textarea {
+  background: none;
+  outline: none;
+  border: 0;
+  resize: none;
+}
+
+.card button {
+  cursor: pointer;
+}
+
+.card-title {
+  width: 100%;
+  font-family: "Permanent Marker", cursive;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #2c2c2c;
+}
+
+.card-content {
+  width: 100%;
+  font-family: "Permanent Marker", cursive;
+  display: flex;
+  height: 110%;
+  align-items: center;
+  font-size: 0.8rem;
+  align-self: center;
+  color: #4c4c4c;
+}
+
+.card-update-button {
+  width: auto;
+  display: none;
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+}
+
+.card-delete {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.card-color-1 {
+  background-color: #ead3a7;
+}
+
+.card-color-2 {
+  background-color: #9de0f5;
+}
+
+.card-color-3 {
+  background-color: #ef89ba;
+}
+
+.card-color-4 {
+  background-color: #fae890;
+}
+
+.card-color-5 {
+  background-color: #abe9c1;
+}
+
+.card-rotation-1 {
+  transform: rotate(0deg);
+}
+.card-rotation-2 {
+  transform: rotate(2deg);
+}
+.card-rotation-3 {
+  transform: rotate(3deg);
+}
+.card-rotation-4 {
+  transform: rotate(4deg);
+}
+.card-rotation-5 {
+  transform: rotate(5deg);
+}
+.card-rotation-6 {
+  transform: rotate(6deg);
+}
+.card-rotation-7 {
+  transform: rotate(-2deg);
+}
+.card-rotation-8 {
+  transform: rotate(-3deg);
+}
+.card-rotation-9 {
+  transform: rotate(-4deg);
+}
+.card-rotation-10 {
+  transform: rotate(-5deg);
+}
+.card-rotation-11 {
+  transform: rotate(-6deg);
+}
+
+.add-card {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  place-content: center;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
+  border-radius: 100%;
+}
+
+@keyframes pulse-yellow {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(247, 215, 54, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(247, 215, 54, 0.3);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(247, 215, 54, 0.1);
+  }
+}
+
+.add-card:hover {
+  box-shadow: 0 0 0 0 rgba(247, 215, 54, 1);
+  animation: pulse-yellow 2s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--post-it-yellow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--post-it-yellow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--post-it-yellow);
+}

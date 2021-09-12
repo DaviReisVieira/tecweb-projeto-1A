@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="src/img/logo-getit.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get-it - Como o Post-it, mas com outro verbo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/getit.css" />
+  </head>
+
+  <body>
+    <div class="appbar">
+      <img src="src/img/logo-getit.png" class="logo" />
+      <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+    </div>
+
+    <main class="container">
+      <form class="form-card" method="post" id="form-container">
+        <input type="hidden" name="method" value="CREATE" />
+        <input
+          required
+          class="form-card-title"
+          type="text"
+          name="title"
+          placeholder="Título"
+        />
+        <textarea
+          required
+          class="autoresize"
+          name="content"
+          placeholder="Digite o conteúdo..."
+        ></textarea>
+        <button class="btn" type="submit">Criar Post-It</button>
+      </form>
+
+      <ul class="card-container">
+        {notes}
+      </ul>
+      <div class="add-card">
+        <a onclick="createCard()">
+          <svg
+            enable-background="new 0 0 50 50"
+            height="50px"
+            id="Layer_1"
+            version="1.1"
+            viewBox="0 0 50 50"
+            width="50px"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <rect fill="none" height="50" width="50" />
+            <line
+              fill="none"
+              stroke="#f7d736"
+              stroke-miterlimit="10"
+              stroke-width="4"
+              x1="9"
+              x2="41"
+              y1="25"
+              y2="25"
+            />
+            <line
+              fill="none"
+              stroke="#f7d736"
+              stroke-miterlimit="10"
+              stroke-width="4"
+              x1="25"
+              x2="25"
+              y1="9"
+              y2="41"
+            />
+          </svg>
+        </a>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="src/js/getit.js"></script>
+  </body>
+</html>

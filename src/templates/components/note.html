@@ -1,0 +1,28 @@
+<li class="card" key="{id}">
+  <form method="post">
+    <button class="card-update-button" type="submit" id="{id}">
+      <i class="fa fa-save"></i>
+    </button>
+    <input type="hidden" name="method" value="UPDATE" />
+    <input type="hidden" name="id" value="{id}" />
+    <input
+      value="{title}"
+      name="title"
+      class="card-title inputcard"
+      key="{id}"
+    />
+    <textarea
+      value="{content}"
+      name="content"
+      class="card-content inputcard"
+      key="{id}"
+    >
+{content}</textarea
+    >
+  </form>
+  <form class="card-delete" method="post">
+    <input type="hidden" name="method" value="DELETE" />
+    <input type="hidden" name="id" value="{id}" />
+    <button type="submit"><i class="fa fa-trash"></i></button>
+  </form>
+</li>
